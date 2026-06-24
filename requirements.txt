@@ -1,0 +1,8 @@
+# Minimal: compute_paper_numbers.py needs only these two.
+pandas>=2.0
+numpy>=1.24
+
+# Additionally required by generate_paper_data.py / analyze.py
+# (the supplementary per-instance table and the greedy/ng-relaxation log parsing):
+tqdm
+matplotlib
