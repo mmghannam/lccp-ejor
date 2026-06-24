@@ -40,6 +40,7 @@ def load_experiment_files():
     """Load all experiment files for the main experiment version."""
     files = {
         'compact': f"{RESULTS_DIR}/compact.csv",
+        'compact_bks': f"{RESULTS_DIR}/compact_bks.csv",
         'full': f"{RESULTS_DIR}/{EXPERIMENT_VERSION}_full.csv",
         'full_nobidir': f"{RESULTS_DIR}/{EXPERIMENT_VERSION}_full_nobidir.csv",
         'full_nopar': f"{RESULTS_DIR}/{EXPERIMENT_VERSION}_full_nopar.csv",
@@ -201,8 +202,10 @@ def main():
     # =========================================================================
     print_section("OVERALL RESULTS")
 
-    # Per-table basket: instances solved by bnp-full or bnc-sec.
-    overall_basket = per_table_basket(files, ['full', 'compact'])
+    # Per-table basket: instances solved by at least one exact configuration
+    # (bnc-sec, bnp-mcv = full_nobestsol, bnp-full, bnc-full = compact_bks),
+    # matching the Table 1 caption in the paper.
+    overall_basket = per_table_basket(files, ['compact', 'full_nobestsol', 'full', 'compact_bks'])
     print(f"(per-table basket: {len(overall_basket)} instances)")
     full_stats = compute_solver_stats(files['full'], overall_basket)
     compact_stats = compute_solver_stats(files['compact'], overall_basket)
