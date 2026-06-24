@@ -1,7 +1,11 @@
-# Reproducibility — computational study (Section 7)
+# LCCP — reproducibility material
 
-This folder contains the per-instance result data and the scripts that turn it
-into every number reported in the computational study, so that the tables and
+This repository is supplementary material for the paper *"A Numerically-safe
+Branch-Price-and-Cut Algorithm for the Length-Constrained Cycle Partition
+Problem"*, submitted to the *European Journal of Operational Research* (EJOR).
+
+It contains the per-instance result data and the scripts that turn it into every
+number reported in the computational study (Section 7), so that the tables and
 headline figures can be regenerated from the raw data.
 
 ## Quick start
