@@ -119,6 +119,12 @@ def main():
     for k, df in [("bnc-sec", sec), ("bnp-mcv", mcv), ("bnc-full", secb), ("bnp-full", full)]:
         gap = zstar_root_gap(df)
         print(f"{k:<10}{len(S[k]):>8}{gap:>8.1f}{sgm(sub(df, basket)['total_time']):>10.1f}")
+    for k, fn in [("heurbnp", "27_heuristic.csv"), ("heurbnp-rf", "27_heuristic_rf.csv")]:
+        try:
+            hdf = read_csv(fn)
+            print(f"{k:<10}{'---':>8}{'---':>8}{sgm(sub(hdf, basket)['total_time']):>10.1f}")
+        except FileNotFoundError:
+            pass
     t = lambda df: sgm(sub(df, basket)["total_time"])
     print(f"\nspeedup bnc-sec / bnp-full  : {t(sec)/t(full):.1f}x")
     print(f"speedup bnc-sec / bnp-mcv   : {t(sec)/t(mcv):.1f}x   (both MCV warm start)")
